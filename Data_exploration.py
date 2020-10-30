@@ -11,7 +11,7 @@ print(data)
 
 print(data.dtypes)
 
-print(data.describe()) 
+print(data.describe())
 
 data['counts'] = 1
 print(data[['counts', 'gluc']].groupby(['gluc']).agg('count'))
@@ -34,18 +34,50 @@ print(data[['counts', 'ap_hi']].groupby(['ap_hi']).agg('count'))
 data['counts'] = 1
 print(data[['counts', 'cholesterol']].groupby(['cholesterol']).agg('count'))
 '''
-fig = plt.figure(figsize=(10, 10)) # Define plot area
+
+"""fig = plt.figure(figsize=(10, 10)) # Define plot area
 ax = fig.gca() # Define axis
 plt.boxplot(data.loc[:, 'height'])
 ax.set_title('Box plot of high blood pressure') # Give the plot a main title
 ax.set_ylim(0.0, 300)
 plt.show()
 
-'''
+
 fig = plt.figure(figsize=(10, 10)) # Define plot area
 ax = fig.gca() # Define axis
 plt.boxplot(data.loc[:, 'ap_lo'])
 ax.set_title('Box plot of high blood pressure') # Give the plot a main title
 ax.set_ylim(0.0, 300)
-plt.show()
-'''
+plt.show()"""
+
+data_array = data.to_numpy()
+
+#Height Checker
+height = data_array[:, 3]
+maxH = 180
+minH = 140
+maxOutlier = height[height>maxH]
+nOutMax = len(maxOutlier)
+print("Count > ", maxH, " is: ", nOutMax)
+
+minOutlier = height[height<minH]
+nOutMin = len(minOutlier)
+print("Count < ", minH, " is: ", nOutMin)
+
+print("Total Amount of Outliers: ", nOutMax + nOutMin)
+
+#Weight Checker
+height = data_array[:, 4]
+maxH = 180
+minH = 140
+maxOutlier = height[height>maxH]
+nOutMax = len(maxOutlier)
+print("Count > ", maxH, " is: ", nOutMax)
+
+minOutlier = height[height<minH]
+nOutMin = len(minOutlier)
+print("Count < ", minH, " is: ", nOutMin)
+
+print("Total Amount of Outliers: ", nOutMax + nOutMin)
+
+#print(data_array)
