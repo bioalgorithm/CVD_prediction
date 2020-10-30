@@ -11,7 +11,7 @@ print(data)
 
 print(data.dtypes)
 
-print(data.describe())
+print(data.describe()) 
 
 data['counts'] = 1
 print(data[['counts', 'gluc']].groupby(['gluc']).agg('count'))
