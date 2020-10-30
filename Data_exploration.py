@@ -6,7 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 pd.set_option('display.max_columns', None)
 data = pd.read_csv("cardio_train_updated.csv")
-'''
+
 print(data)
 
 print(data.dtypes)
@@ -33,12 +33,29 @@ data['counts'] = 1
 print(data[['counts', 'ap_hi']].groupby(['ap_hi']).agg('count'))
 data['counts'] = 1
 print(data[['counts', 'cholesterol']].groupby(['cholesterol']).agg('count'))
-'''
 
-"""fig = plt.figure(figsize=(10, 10)) # Define plot area
+#boxplot for height
+fig = plt.figure(figsize=(10, 10)) # Define plot area
 ax = fig.gca() # Define axis
 plt.boxplot(data.loc[:, 'height'])
-ax.set_title('Box plot of high blood pressure') # Give the plot a main title
+ax.set_title('Box plot of height (cm)') # Give the plot a main title
+ax.set_ylim(0.0, 300)
+plt.show()
+
+
+#boxplot for weight
+fig = plt.figure(figsize=(10, 10)) # Define plot area
+ax = fig.gca() # Define axis
+plt.boxplot(data.loc[:, 'weight'])
+ax.set_title('Box plot of weight (kg)') # Give the plot a main title
+ax.set_ylim(0.0, 300)
+plt.show()
+
+#boxplot for app_hi
+fig = plt.figure(figsize=(10, 10)) # Define plot area
+ax = fig.gca() # Define axis
+plt.boxplot(data.loc[:, 'ap_hi'])
+ax.set_title('Box plot of systolic blood pressure (mmHg)') # Give the plot a main title
 ax.set_ylim(0.0, 300)
 plt.show()
 
@@ -46,9 +63,10 @@ plt.show()
 fig = plt.figure(figsize=(10, 10)) # Define plot area
 ax = fig.gca() # Define axis
 plt.boxplot(data.loc[:, 'ap_lo'])
-ax.set_title('Box plot of high blood pressure') # Give the plot a main title
+ax.set_title('Box plot of diastolic blood pressure') # Give the plot a main title
 ax.set_ylim(0.0, 300)
-plt.show()"""
+plt.show()
+
 
 data_array = data.to_numpy()
 
