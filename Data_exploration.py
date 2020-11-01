@@ -147,10 +147,10 @@ id = [3, 4, 5, 6]
 
 for i in range(len(max)):
     index = np.nonzero(data_array[:, id[i]] > max[i])
-    data_array = np.delete(data_array, index, axis=0)
+    data_array = np.delete(data_array, index[0], axis=0)
 
     index = np.nonzero(data_array[:, id[i]] < min[i])
-    data_array = np.delete(data_array, index, axis=0)
+    data_array = np.delete(data_array, index[0], axis=0)
 
 
 # male (2->0)
