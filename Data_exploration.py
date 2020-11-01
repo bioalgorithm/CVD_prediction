@@ -141,6 +141,70 @@ total = totalWeight + totalHeight + totalDia + totalSys
 print("Total Outliers = ", total)
 print("Good Data = ", 70000 - total)
 
+max = [180, 110, 170, 110]
+min = [140, 40, 90, 70]
+id = [3, 4, 5, 6]
+
+for i in range(len(max)):
+    index = np.nonzero(data_array[:, id[i]] > max[i])
+    data_array = np.delete(data_array, index, axis=0)
+
+    index = np.nonzero(data_array[:, id[i]] < min[i])
+    data_array = np.delete(data_array, index, axis=0)
+
+
+# male (2->0)
+index = np.nonzero(data_array[:, 2] == 2)
+for i in index:
+    data_array[i, 2] = 0
+
+# chlo (1->0)
+index = np.nonzero(data_array[:, 7] == 1)
+for i in index:
+    data_array[i, 7] = 0
+
+# chlo (2,3->1)
+index = np.nonzero(data_array[:, 7] == 2)
+for i in index:
+    data_array[i, 7] = 1
+index = np.nonzero(data_array[:, 7] == 3)
+for i in index:
+    data_array[i, 7] = 1
+
+# gluc (1->0)
+index = np.nonzero(data_array[:, 8] == 1)
+for i in index:
+    data_array[i, 8] = 0
+
+# gluc (2,3->1)
+index = np.nonzero(data_array[:, 8] == 2)
+for i in index:
+    data_array[i, 8] = 1
+index = np.nonzero(data_array[:, 8] == 3)
+for i in index:
+    data_array[i, 8] = 1
+
+#np.savetxt("cardio_train_clean.csv", data_array, delimiter=",", header= "id")
+
+data_clean = pd.read_csv("cardio_train_clean.csv")
+
+print(data.describe())
+print(data_clean.describe())
+
+
+# TO DO: Change gender, make male (2) into 0 value, for chlosterol/gluc change 1->0 2+3->1
+
+# TO DO: We have the clean data in each col, but what we need to do is find the index of the outliers, we need to remove
+#        the outliers row index, which would get rid of the entire row, rather than just the height, weight etc data.
+
+# Pseudo: Find index, take initial data_array, use index to get rid of row in data_array, then take the final array
+#         and make CSV from it, call this cardio_train_clean.csv
+
+# TO DO: analyze newly cleaned data (cardio_train_clean)
+
+'''
+EXTRAS
+
 heightGood = height[height <= maxH]
 heightGood = heightGood[heightGood >= minH]
 
@@ -153,14 +217,4 @@ SysGood = SysGood[SysGood >= minS]
 diaGood = dia[dia <= maxD]
 diaGood = diaGood[diaGood >= minD]
 
-full_data = np.copy(data_array)
-# TO DO: Change gender, make male (2) into 0 value, for chlosterol/gluc change 1->0 2+3->1
-
-# TO DO: We have the clean data in each col, but what we need to do is find the index of the outliers, we need to remove
-#        the outliers row index, which would get rid of the entire row, rather than just the height, weight etc data.
-
-# Pseudo: Find index, take initial data_array, use index to get rid of row in data_array, then take the final array
-#         and make CSV from it, call this cardio_train_clean.csv
-
-# TO DO: analyze newly cleaned data (cardio_train_clean)
-
+full_data = np.copy(data_array)'''
