@@ -10,6 +10,7 @@ from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import svm
+from sklearn.ensemble import RandomForestClassifier
 
 
 data = pd.read_csv("cardio_train_clean_featureselection.csv")
@@ -98,5 +99,21 @@ print('SVM Metrics:')
 print('Accuracy: ', metrics.accuracy_score(y_test, y_pred_svm))
 print('Precision: ', metrics.precision_score(y_test, y_pred_svm))
 print('Recall: ', metrics.recall_score(y_test, y_pred_svm))
+print()
+plt.show()
+
+# Random Forests
+
+rf_model = RandomForestClassifier(max_depth=5)
+rf_model.fit(x_train, y_train)
+y_pred_rf = rf_model.predict(x_test)
+
+confusion_matrix_rf = pd.crosstab(y_test, y_pred_rf, rownames=['Actual'], colnames=['Predicted'])
+sns.heatmap(confusion_matrix_rf, annot=True)
+
+print('Random Forest Metrics:')
+print('Accuracy: ', metrics.accuracy_score(y_test, y_pred_rf))
+print('Precision: ', metrics.precision_score(y_test, y_pred_rf))
+print('Recall: ', metrics.recall_score(y_test, y_pred_rf))
 print()
 plt.show()
