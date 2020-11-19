@@ -1,0 +1,19 @@
+from sklearn import metrics
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import MultinomialNB
+from sklearn import svm
+from sklearn.ensemble import RandomForestClassifier
+
+data = pd.read_csv("cardio_train_clean_featureselection.csv")
+
+# Features = xfeat, Target Variable = Y
+xfeat = data[['Age', 'Gender','Height', 'Weight', "Systolic BP", "Chlosterol ", "Glucose", "Smoke", "Alcohol", "Active"]]
+y = data['Cardio']
+
