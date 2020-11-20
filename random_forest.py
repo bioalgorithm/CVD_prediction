@@ -52,5 +52,4 @@ rf_random.fit(X, y)
 #rf_random.best_params_
 best_random = rf_random.best_estimator_
 
-print('Mean Recall: ', rf_random.best_score_)
 print('Config: ', rf_random.best_params_)
