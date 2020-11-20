@@ -49,5 +49,8 @@ rf = RandomForestClassifier()
 rf_random = RandomizedSearchCV(estimator = rf, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
 # Fit the random search model
 rf_random.fit(X, y)
-rf_random.best_params_
+#rf_random.best_params_
 best_random = rf_random.best_estimator_
+
+print('Mean Recall: ', rf_random.best_score_)
+print('Config: ', rf_random.best_params_)
