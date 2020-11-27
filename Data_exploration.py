@@ -186,7 +186,7 @@ for i in index:
 
 #np.savetxt("cardio_train_clean.csv", data_array, delimiter=",", header= "id")
 
-data_clean = pd.read_csv("cardio_train_clean.csv")
+data_clean = pd.read_csv("cardio_train_clean_1hot.csv")
 
 print(data.describe())
 print(data_clean.describe())
