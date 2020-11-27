@@ -76,7 +76,7 @@ Counting Outliers
 
 # To Numpy
 data_array = data.to_numpy()
-
+'''
 # Height Checker
 height = data_array[:, 3]
 maxH = 180
@@ -140,7 +140,9 @@ total = totalWeight + totalHeight + totalDia + totalSys
 
 print("Total Outliers = ", total)
 print("Good Data = ", 70000 - total)
+'''
 
+# Get rid of outliers
 max = [180, 110, 170, 110]
 min = [140, 40, 90, 70]
 id = [3, 4, 5, 6]
@@ -151,7 +153,6 @@ for i in range(len(max)):
 
     index = np.nonzero(data_array[:, id[i]] < min[i])
     data_array = np.delete(data_array, index[0], axis=0)
-
 
 # male (2->0)
 index = np.nonzero(data_array[:, 2] == 2)
@@ -186,7 +187,7 @@ for i in index:
 
 #np.savetxt("cardio_train_clean.csv", data_array, delimiter=",", header= "id")
 
-data_clean = pd.read_csv("cardio_train_clean_1hot.csv")
+data_clean = pd.read_csv("cardio_train_clean.csv")
 
 print(data.describe())
 print(data_clean.describe())
