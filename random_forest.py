@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn import metrics
 import pandas as pd
+import joblib
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -14,12 +15,22 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 data = pd.read_csv("cardio_train_clean_featureselection.csv")
-
+data_1hot = pd.read_csv("cardio_train_clean_1hot_featureselection.csv")
 # Features = xfeat, Target Variable = Y
-xfeat = data[['Age', 'Gender','Height', 'Weight', "Systolic BP", "Chlosterol ", "Glucose", "Smoke", "Alcohol", "Active"]]
+xfeat = data[['Age', 'Gender','Height', 'Weight', "Systolic BP",
+              "Chlosterol ", "Glucose", "Smoke", "Alcohol", "Active"]]
+
+xfeat_1hot = data_1hot[['Age', 'Gender','Height', 'Weight', "Systolic BP",
+              "Chlosterol_Normal","Chlosterol_High","Chlosterol_Veryhigh",
+              "Glucose_Normal","Glucose_High","Glucose_Veryhigh", "Smoke", "Alcohol", "Active"]]
+
 y = data['Cardio']
 
 x_train, x_test, y_train, y_test = train_test_split(xfeat, y, test_size=0.2, random_state=0)
+x_train_1hot, x_test_1hot, y_train_1hot, y_test_1hot = train_test_split(xfeat_1hot, y, test_size=0.2, random_state=0)
+
+rf = RandomForestClassifier()
+
 from sklearn.model_selection import RandomizedSearchCV
 # Number of trees in random forest
 n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
@@ -45,20 +56,45 @@ print(random_grid)
 # Use the random grid to search for best hyperparameters
 # First create the base model to tune
 
-rf = RandomForestClassifier()
+
 
 # Random search of parameters, using 3 fold cross validation,
 # search across 100 different combinations, and use all available cores
 
+rf_random = RandomizedSearchCV(estimator=rf, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
+# Fit the random search model
+rf_random.fit(xfeat_1hot, y)
+
+best_random = rf_random.best_estimator_
+joblib.dump(rf_random, 'random_forest.sav')
+print('Config: ', rf_random.best_params_)
+
 
 '''
-rf_random = RandomizedSearchCV(estimator = rf, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
-# Fit the random search model
-rf_random.fit(X, y)
-#rf_random.best_params_
-best_random = rf_random.best_estimator_
+rf.fit(x_train_1hot, y_train_1hot)
+y_pred_rf = rf.predict(x_test_1hot)
 
-print('Config: ', rf_random.best_params_)
+print()
+print('INITIAL_1hot rf Metrics:')
+print('Accuracy: ', metrics.accuracy_score(y_test_1hot, y_pred_rf))
+print('Precision: ', metrics.precision_score(y_test_1hot, y_pred_rf))
+print('Recall: ', metrics.recall_score(y_test_1hot, y_pred_rf))
+print()
+
+rf = RandomForestClassifier(n_estimators= 1000, min_samples_split = 10, min_samples_leaf = 2, max_features = 'sqrt',
+                            max_depth= 10, bootstrap = True)
+rf.fit(x_train, y_train)
+y_pred_rf = rf.predict(x_test)
+
+print()
+print('Tuned_1hot rf Metrics:')
+print('Accuracy: ', metrics.accuracy_score(y_test_1hot, y_pred_rf))
+print('Precision: ', metrics.precision_score(y_test_1hot, y_pred_rf))
+print('Recall: ', metrics.recall_score(y_test_1hot, y_pred_rf))
+print()
+
+'''
+
 '''
 
 rf.fit(x_train, y_train)
@@ -82,3 +118,10 @@ print('Accuracy: ', metrics.accuracy_score(y_test, y_pred_rf))
 print('Precision: ', metrics.precision_score(y_test, y_pred_rf))
 print('Recall: ', metrics.recall_score(y_test, y_pred_rf))
 print()
+
+'''
+
+'''
+Config:  {'n_estimators': 1000, 'min_samples_split': 10, 
+'min_samples_leaf': 2, 'max_features': 'sqrt', 'max_depth': 10, 'bootstrap': True}
+'''

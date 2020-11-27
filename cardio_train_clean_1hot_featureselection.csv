@@ -1,4 +1,4 @@
-Age,Gender,Height,Weight,Systolic BP,Chlosterol_Normal,Chlosterol_High,Chlosterol_Veryhigh ,Glucose_Normal,Glucose_High,Glucose_Veryhigh,Smoke,Alcohol,Active,Cardio
+Age,Gender,Height,Weight,Systolic BP,Chlosterol_Normal,Chlosterol_High,Chlosterol_Veryhigh,Glucose_Normal,Glucose_High,Glucose_Veryhigh,Smoke,Alcohol,Active,Cardio
 50,0,168,62,110,1,0,0,1,0,0,0,0,1,0
 55,1,156,85,140,0,0,1,1,0,0,0,0,1,1
 52,1,165,64,130,0,0,1,1,0,0,0,0,0,1

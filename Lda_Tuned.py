@@ -3,8 +3,9 @@ from sklearn import metrics
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.model_selection import GridSearchCV
+import joblib
 
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
@@ -43,8 +44,10 @@ parameters = {'solver': ['svd', 'lsqr', 'eigen']}
 
 y_pred_LDA = lda_model.predict(x_test)
 
-search = GridSearchCV(lda_model, parameters, scoring='recall')
+search = RandomizedSearchCV(lda_model, parameters, scoring='recall')
 results = search.fit(x_test, y_test)
+
+joblib.dump(search, 'Lda_Tuned.sav')
 
 print('Mean accuracy: ', results.best_score_)
 print('Config: ', results.best_params_)
@@ -58,3 +61,5 @@ print('Accuracy: ', metrics.accuracy_score(y_test, y_pred_LDA))
 print('Precision: ', metrics.precision_score(y_test, y_pred_LDA))
 print('Recall: ', metrics.recall_score(y_test, y_pred_LDA))
 print()
+
+
