@@ -16,7 +16,7 @@ from sklearn.ensemble import RandomForestClassifier
 data = pd.read_csv("cardio_train_clean_featureselection.csv")
 
 # Features = xfeat, Target Variable = Y
-xfeat = data[['Age', 'Gender','Height', 'Weight', "Systolic BP", "Chlosterol", "Glucose", "Smoke", "Alcohol", "Active"]]
+xfeat = data[['Age', 'Gender', 'Height', 'Weight', "Systolic BP", "Chlosterol ", "Glucose", "Smoke", "Alcohol", "Active"]]
 y = data['Cardio']
 
 x_train, x_test, y_train, y_test = train_test_split(xfeat, y, test_size=0.2, random_state=0)
@@ -117,3 +117,38 @@ print('Precision: ', metrics.precision_score(y_test, y_pred_rf))
 print('Recall: ', metrics.recall_score(y_test, y_pred_rf))
 print()
 plt.show()
+
+"""
+
+LDA Metrics:
+Accuracy:  0.7149987923677643
+Precision:  0.7452936746987951
+Recall:  0.6441588024731533
+
+QDA Metrics:
+Accuracy:  0.6987360115932695
+Precision:  0.7156440617151059
+Recall:  0.6490400260331923
+
+Gaussian Naive Bayes Metrics:
+Accuracy:  0.6959182030432333
+Precision:  0.7202082171407325
+Recall:  0.6303286690530426
+
+Multinomial Naive Bayes Metrics:
+Accuracy:  0.6981724498832622
+Precision:  0.7219033512312535
+Recall:  0.6343963553530751
+
+SVM Metrics:
+Accuracy:  0.705901296191933
+Precision:  0.755273397501536
+Recall:  0.6000650829808005
+
+Random Forest Metrics:
+Accuracy:  0.712905563159166
+Precision:  0.7303571428571428
+Recall:  0.6654734786853238
+
+"""
+

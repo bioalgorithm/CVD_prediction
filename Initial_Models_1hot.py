@@ -135,6 +135,7 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25,random_state
 logistic_regression_model= LogisticRegression(max_iter=100000, C=100)
 logistic_regression_model.fit(x_train,y_train)
 y_pred_lr=logistic_regression_model.predict(x_test)
+
 #confusion matrix
 confusion_matrix = pd.crosstab(y_test, y_pred_lr, rownames=['Actual'], colnames=['Predicted'])
 sns.heatmap(confusion_matrix, annot=True)
