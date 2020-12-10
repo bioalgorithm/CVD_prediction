@@ -10,7 +10,7 @@ import joblib
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 
-data = pd.read_csv("cardio_train_clean_1hot_featureselection.csv")
+data = pd.read_csv("data/cardio_train_clean_1hot_featureselection.csv")
 
 # Features = xfeat, Target Variable = Y
 xfeat = data[['Age', 'Gender','Height', 'Weight', "Systolic BP",

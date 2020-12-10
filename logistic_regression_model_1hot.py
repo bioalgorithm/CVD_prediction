@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 sns.set(style="white")
 sns.set(style="whitegrid", color_codes=True)
 pd.set_option('display.max_columns', None)
-data = pd.read_csv("cardio_train_clean_1hot_featureselection.csv")
+data = pd.read_csv("data/cardio_train_clean_1hot_featureselection.csv")
 '''
 print(data.shape)
 print(data.head())

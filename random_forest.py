@@ -15,7 +15,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 data = pd.read_csv("cardio_train_clean_featureselection.csv")
-data_1hot = pd.read_csv("cardio_train_clean_1hot_featureselection.csv")
+data_1hot = pd.read_csv("data/cardio_train_clean_1hot_featureselection.csv")
 # Features = xfeat, Target Variable = Y
 xfeat = data[['Age', 'Gender','Height', 'Weight', "Systolic BP",
               "Chlosterol ", "Glucose", "Smoke", "Alcohol", "Active"]]
