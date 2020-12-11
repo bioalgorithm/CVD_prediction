@@ -25,7 +25,8 @@ lda_model = LinearDiscriminantAnalysis()
 lda_model.fit(x_train, y_train)
 
 y_pred_LDA = lda_model.predict(x_test)
-
+print(x_test)
+y_prob = lda_model.predict_proba(x_test)
 confusion_matrix_LDA = pd.crosstab(y_test, y_pred_LDA, rownames=['Actual'], colnames=['Predicted'])
 sns.heatmap(confusion_matrix_LDA, annot=True)
 
