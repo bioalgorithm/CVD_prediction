@@ -47,7 +47,7 @@ app.layout = html.Div([
 
         dbc.Row(
             [
-                html.Div(
+                dbc.Col(html.Div(
                     [
                         html.P('Gender (M/F): '),
                         dbc.RadioItems(
@@ -60,9 +60,9 @@ app.layout = html.Div([
                     ],
                     className='one columns',
                     style={'margin-left': 10, 'padding': 10}
-                ),
+                )),
 
-                html.Div(
+                dbc.Col(html.Div(
                     [
                         html.P('Age (Years): '),
                         dbc.Input(
@@ -73,9 +73,9 @@ app.layout = html.Div([
                     ],
                     className='three columns',
                     style={'margin-left': 10, 'padding': 10}
-                ),
+                )),
 
-                html.Div(
+                dbc.Col(html.Div(
                     [
                         html.P('Height (cm): '),
                         dbc.Input(
@@ -86,9 +86,9 @@ app.layout = html.Div([
                     ],
                     className='three columns',
                     style={'margin-left': 10, 'padding': 10}
-                ),
+                )),
 
-                html.Div(
+                dbc.Col(html.Div(
                     [
                         html.P('Weight (kg): '),
                         dbc.Input(
@@ -99,9 +99,9 @@ app.layout = html.Div([
                     ],
                     className='three columns',
                     style={'margin-left': 10, 'padding': 10}
-                ),
+                )),
 
-                html.Div(
+                dbc.Col(html.Div(
                     [
                         html.P('Systolic Blood Pressure (mmHg): '),
                         dbc.Input(
@@ -112,8 +112,8 @@ app.layout = html.Div([
                     ],
                     className='three columns',
                     style={'padding': 10}
-                ),
-            ], className='row1'),
+                ))
+            ]),
 
         dbc.Row([
             dbc.Col(html.Div(
