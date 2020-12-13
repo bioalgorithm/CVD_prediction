@@ -10,7 +10,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
 app.title = 'Cardiovascular Disease Predictor'
 
 df = pd.read_csv("cardio_train_clean_featureselection.csv")
-model = joblib.load('logistic_regression_model.sav')
+model = joblib.load('logistic_regression_final_model.sav')
 
 layout = dict(
     autosize=True,
@@ -98,20 +98,8 @@ app.layout = html.Div([
                     ],
                     className='three columns',
                     style={'padding': 10}
-                )),
-
-                dbc.Col(html.Div(
-                    [
-                        html.P('Systolic BP (mmHg): '),
-                        dbc.Input(
-                            id="sys", type="number",
-                            debounce=True, placeholder="90 - 170 mmHg", min=90, max=170
-
-                        ),
-                    ],
-                    className='three columns',
-                    style={'padding': 10}
                 ))
+
             ]),
 
         dbc.Row([
@@ -143,34 +131,7 @@ app.layout = html.Div([
                 className='two columns',
                 style={'padding': 10}
             )),
-            dbc.Col(html.Div(
-                [
-                    html.P('Smoker?: '),
-                    dbc.RadioItems(
-                        id="smoke",
-                        options=[
-                            {'label': 'Yes', 'value': 1},
-                            {'label': 'No', 'value': 0}],
-                        value=0
-                    ),
-                ],
-                className='three columns',
-                style={'padding': 10}
-            )),
-            dbc.Col(html.Div(
-                [
-                    html.P('Drinks Alcohol?: '),
-                    dbc.RadioItems(
-                        id="alc",
-                        options=[
-                            {'label': 'Yes', 'value': 1},
-                            {'label': 'No', 'value': 0}],
-                        value=0
-                    ),
-                ],
-                className='four columns',
-                style={'padding': 10}
-            )),
+
             dbc.Col(html.Div(
                 [
                     html.P('Active?: '),
@@ -183,6 +144,18 @@ app.layout = html.Div([
                     ),
                 ],
                 className='five columns',
+                style={'padding': 10}
+            )),
+            dbc.Col(html.Div(
+                [
+                    html.P('Systolic BP (mmHg): '),
+                    dbc.Input(
+                        id="sys", type="number",
+                        debounce=True, placeholder="90 - 170 mmHg", min=90, max=170
+
+                    ),
+                ],
+                className='three columns',
                 style={'padding': 10}
             ))
 
@@ -216,11 +189,9 @@ app.layout = html.Div([
                State('sys', 'value'),
                State('chol', 'value'),
                State('gluc', 'value'),
-               State('smoke', 'value'),
-               State('alc', 'value'),
                State('active', 'value')
                ])
-def prediction(s_clicks, gender, age, height, weight, sys, chol, gluc, smoke, alc, active):
+def prediction(s_clicks, gender, age, height, weight, sys, chol, gluc, active):
 
     # Checks clicks
     if s_clicks == 0:
@@ -242,7 +213,7 @@ def prediction(s_clicks, gender, age, height, weight, sys, chol, gluc, smoke, al
     if clicked:
         data = np.array([[
             age, gender, height, weight, sys,
-            chol, gluc, smoke, alc, active],
+            chol, gluc, active],
         ])
         data.reshape(1, -1)
 
@@ -259,13 +230,11 @@ def prediction(s_clicks, gender, age, height, weight, sys, chol, gluc, smoke, al
     Output('sys', 'value'),
     Output('chol', 'value'),
     Output('gluc', 'value'),
-    Output('smoke', 'value'),
-    Output('alc', 'value'),
     Output('active', 'value')],
 
     [Input('submit-val', 'n_clicks')])
 def update(reset):
-        return 0, "30 - 80 years", "140 - 180 cm", "40 - 110 kg", "90 - 170 mmHg", 0, 0, 0, 0, 0
+        return 0, "30 - 80 years", "140 - 180 cm", "40 - 110 kg", "90 - 170 mmHg", 0, 0, 0
 
 if __name__ == '__main__':
     app.run_server(debug=True)
