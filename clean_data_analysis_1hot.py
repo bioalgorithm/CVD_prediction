@@ -34,13 +34,15 @@ for cvd in range(2):
     ax = df.plot.bar(title = 'If patient ' + string[cvd], rot=0)
     plt.ylim(0, 1)
     plt.show()
+
 #correlation matrix using r
+sns.set(rc={'figure.figsize': (11.7, 8.27)})
 corr_matrix = data.corr()
-sns.heatmap(corr_matrix, annot=True)
+sns.heatmap(corr_matrix, annot=True, fmt='0.2f')
 plt.show()
 #correction matrix using r^2
 corr_matrix = data.corr()
-sns.heatmap(corr_matrix*corr_matrix, annot=True)
+sns.heatmap(corr_matrix*corr_matrix, annot=True, fmt='0.2f')
 plt.show()
 
 
