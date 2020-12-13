@@ -1,6 +1,5 @@
 #includes all models
 import numpy as np
-from sklearn import metrics
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt

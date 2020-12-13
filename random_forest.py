@@ -56,8 +56,6 @@ print(random_grid)
 # Use the random grid to search for best hyperparameters
 # First create the base model to tune
 
-
-
 # Random search of parameters, using 3 fold cross validation,
 # search across 100 different combinations, and use all available cores
 
