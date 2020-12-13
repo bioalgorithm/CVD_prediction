@@ -9,12 +9,12 @@ import pandas as pd
 pd.set_option('display.max_columns', None)
 data = pd.read_csv("cardio_train_updated.csv")
 
-#print(data)
-#print(data.dtypes)
-#print(data.describe())
+print(data)
+print(data.dtypes)
+print(data.describe())
 
 # Counts
-"""data['counts'] = 1
+data['counts'] = 1
 print(data[['counts', 'gluc']].groupby(['gluc']).agg('count'))
 data['counts'] = 1
 print(data[['counts', 'weight']].groupby(['weight']).agg('count'))
@@ -34,12 +34,12 @@ data['counts'] = 1
 print(data[['counts', 'ap_hi']].groupby(['ap_hi']).agg('count'))
 data['counts'] = 1
 print(data[['counts', 'cholesterol']].groupby(['cholesterol']).agg('count'))
-"""
+
 """
 PLOTS
 """
 
-"""# boxplot for height
+# boxplot for height
 fig = plt.figure(figsize=(10, 10))  # Define plot area
 ax = fig.gca()  # Define axis
 plt.boxplot(data.loc[:, 'height'])
@@ -68,7 +68,7 @@ ax = fig.gca()  # Define axis
 plt.boxplot(data.loc[:, 'ap_lo'])
 ax.set_title('Box plot of diastolic blood pressure')  # Give the plot a main title
 ax.set_ylim(0.0, 300)
-plt.show()"""
+plt.show()
 
 """
 Counting Outliers
@@ -76,7 +76,7 @@ Counting Outliers
 
 # To Numpy
 data_array = data.to_numpy()
-'''
+
 # Height Checker
 height = data_array[:, 3]
 maxH = 180
@@ -140,7 +140,7 @@ total = totalWeight + totalHeight + totalDia + totalSys
 
 print("Total Outliers = ", total)
 print("Good Data = ", 70000 - total)
-'''
+
 
 # Get rid of outliers
 max = [180, 110, 170, 110]
@@ -185,23 +185,12 @@ index = np.nonzero(data_array[:, 8] == 3)
 for i in index:
     data_array[i, 8] = 1
 
-#np.savetxt("cardio_train_clean.csv", data_array, delimiter=",", header= "id")
+np.savetxt("cardio_train_clean.csv", data_array, delimiter=",", header= "id")
 
 data_clean = pd.read_csv("cardio_train_clean.csv")
 
 print(data.describe())
 print(data_clean.describe())
-
-
-# TO DO: Change gender, make male (2) into 0 value, for chlosterol/gluc change 1->0 2+3->1
-
-# TO DO: We have the clean data in each col, but what we need to do is find the index of the outliers, we need to remove
-#        the outliers row index, which would get rid of the entire row, rather than just the height, weight etc data.
-
-# Pseudo: Find index, take initial data_array, use index to get rid of row in data_array, then take the final array
-#         and make CSV from it, call this cardio_train_clean.csv
-
-# TO DO: analyze newly cleaned data (cardio_train_clean)
 
 '''
 EXTRAS

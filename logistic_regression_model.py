@@ -1,6 +1,5 @@
-#import inline as inline
-import lr as lr
-import matplotlib
+import joblib
+import matplotlib as plt
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -97,7 +96,7 @@ print('Confusion Matrix : \n' + str(confusion_matrix(y_test,y_pred_acc)))
 '''
 #using k-fold cross validation and tuning
 
-model_lr = LogisticRegression()
+model_lr = LogisticRegression(max_iter = 10000)
 penalty = ['l2']
 C = C = [0.001, 0.1, 1, 10, 100]
 hyperparameters = dict(C=C, penalty = penalty)
@@ -105,4 +104,4 @@ from sklearn.model_selection import RandomizedSearchCV
 param_tune = RandomizedSearchCV(model_lr, hyperparameters, random_state= 41)
 param_tune.fit(X,y)
 print("Best: %f using %s" % (param_tune.best_score_, param_tune.best_params_))
-
+joblib.dump(param_tune,'logistic_regression_model.sav')
