@@ -6,7 +6,7 @@ import pandas as pd
 import joblib
 from dash.dependencies import Input, Output, State
 
-app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
+app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY])
 app.title = 'Cardiovascular Disease Predictor'
 
 df = pd.read_csv("cardio_train_clean_featureselection.csv")
@@ -32,18 +32,17 @@ app.layout = html.Div([
     dbc.Row(html.Div(
         [
             html.H1(
-                'Cardiovascular Disease Predictor',
-                style={'font-family': 'Helvetica',
-                       "margin-left": 20,
-                       "margin-bottom": 0}
+                'Risk of Cardiovascular Disease',
+                style={'margin-left': 0, 'margin-bottom' : 0}
             )
         ]
     )),
 
-    # block 2
+    # Title in row (row 0)
     dbc.Row(html.Div([
         html.H3('Patient'),
 
+        # Input row starts (row 1)
         dbc.Row(
             [
                 dbc.Col(html.Div(
@@ -101,7 +100,7 @@ app.layout = html.Div([
                 ))
 
             ]),
-
+        # Input row (row 2)
         dbc.Row([
             dbc.Col(html.Div(
                 [
@@ -178,7 +177,7 @@ app.layout = html.Div([
 ], style={'padding': '25px'})
 
 
-@app.callback(Output('result', 'children'),
+@app.callback([Output('result', 'children'), Output('result', 'style')],
 
               [Input('submit-val', 'n_clicks'),
 
@@ -218,8 +217,21 @@ def prediction(s_clicks, gender, age, height, weight, sys, chol, gluc, active):
         data.reshape(1, -1)
 
         # Check probability
-        y_prob = model.predict_proba(data)
-        return "The prediction for the probability of CVD is: ", round(y_prob[0, 1] * 100, 3), '%'
+        y_prob = round(model.predict_proba(data)[0,1] * 100, 3)
+        result = "The predicted risk for CVD in the patient is: ", y_prob, '%'
+
+        # Color coding (for fun)
+        if y_prob > 75:
+            return [result, {'color': 'red'}]
+
+        elif (y_prob <= 75) and (y_prob >= 50):
+            return [result, {'color': 'yellow'}]
+
+        else:
+            return [result, {'color': 'green'}]
+
+    else:
+        return '', {}
 
 
 @app.callback([
@@ -238,79 +250,3 @@ def update(reset):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-'''
-    html.Div(
-            [
-                html.Div(
-                    [
-                        dcc.Graph(id='chart-2')
-                    ], className = "four columns", style = {'margin-top': 35,
-                                                            'padding': '15',
-                                                            'border': '1px solid #C6CCD5'}
-                ),
-                html.Div(id = 'table-box'),
-                html.Div(dt.DataTable(id = 'table', data=[{}]), style={'display': 'none'})
-            ], className = 'row'
-        )
-    '''
-
-'''
-# ------------------------------------------------------------------------------
-# App layout
-app.layout = html.Div([
-
-    html.H1("Cardiovascular Disease Predictor", style={'text-align': 'center'}),
-
-    dcc.Input(
-        id="age", type="number",
-        debounce=True, placeholder="Age (years)",
-    ),
-    html.Hr(),
-    html.Div(id="age-out"),
-
-    dcc.Input(
-        id="height", type="number",
-        debounce=True, placeholder="Height (cm)",
-    ),
-    html.Hr(),
-    html.Div(id="height-out"),
-
-    dcc.Input(
-        id="weight", type="number",
-        debounce=True, placeholder="Weight (kg)",
-    ),
-    html.Hr(),
-    html.Div(id="weight-out"),
-
-    dcc.Input(
-        id="sys", type="number",
-        debounce=True, placeholder="Systolic Blood Pressure (mmHg)",
-    ),
-    html.Hr(),
-    html.Div(id="sys-out"),
-
-    dcc.RadioItems(
-        id="chol",
-        options=[
-            {'label': 'Normal', 'value': 0},
-            {'label': 'High', 'value': 1},
-            {'label': 'Very High', 'value': 2}],
-        value=0
-    ),
-
-    dcc.RadioItems(
-        id="gluc",
-        options=[
-            {'label': 'Normal', 'value': 0},
-            {'label': 'High', 'value': 1},
-            {'label': 'Very High', 'value': 2}],
-        value=0
-    ),
-    html.Hr(),
-
-    dcc.Graph(id='my_bee_map', figure={})
-
-])
-
-'''
