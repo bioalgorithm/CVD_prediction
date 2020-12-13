@@ -6,7 +6,7 @@ import pandas as pd
 pd.set_option('display.max_columns', None)
 data = pd.read_csv("cardio_train_clean.csv")
 print(data.describe())
-
+#checking the distribution between features of patients who have CVD and who do not have CVD
 data_array = data.to_numpy()
 string = ["does not have CVD", "has CVD"]
 n,m = data_array.shape
@@ -34,21 +34,13 @@ for cvd in range(2):
     ax = df.plot.bar(title = 'If patient ' + string[cvd], rot=0)
     plt.ylim(0, 1)
     plt.show()
-
+#correlation matrix between features using r
 corr_matrix = data.corr()
 sns.heatmap(corr_matrix, annot=True)
 plt.show()
-
+#correlation matrix between features using r^2
 corr_matrix = data.corr()
 sns.heatmap(corr_matrix*corr_matrix, annot=True)
 plt.show()
 
 
-'''# histogram for weight
-fig = plt.figure(figsize=(10, 10))  # Define plot area
-ax = fig.gca()  # Define axis
-df =
-plt.bar(data.loc[:, 'weight'])
-ax.set_title('Box plot of weight (kg)')  # Give the plot a main title
-ax.set_ylim(0.0, 300)
-plt.show()'''

@@ -29,7 +29,7 @@ data_array = np.insert(data_array, 9, np.zeros(len(data_array[:,8])), axis=1)
 data_array = np.insert(data_array, 11, np.zeros(len(data_array[:,8])), axis=1)
 data_array = np.insert(data_array, 12, np.zeros(len(data_array[:,8])), axis=1)
 
-
+#data cleaning
 # male (2->0)
 index = np.nonzero(data_array[:, 2] == 2)
 for i in index:
@@ -71,7 +71,7 @@ for i in index:
     data_array[i, 12] = 1
     data_array[i, 10] = 0
 
-#np.savetxt("cardio_train_clean_1hot.csv", data_array, fmt = '%i', delimiter=",", header= "id")
+np.savetxt("cardio_train_clean_1hot.csv", data_array, fmt = '%i', delimiter=",", header= "id")
 
 data_clean = pd.read_csv("cardio_train_clean_1hot.csv")
 print(data.describe())

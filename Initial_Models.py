@@ -1,9 +1,10 @@
+#import libraries
+#includes all models except logistic regression
 import numpy as np
 from sklearn import metrics
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-
 from sklearn.model_selection import train_test_split
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
@@ -12,7 +13,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
 
-
+#load dataset
 data = pd.read_csv("cardio_train_clean_featureselection.csv")
 
 # Features = xfeat, Target Variable = Y
@@ -26,17 +27,17 @@ lda_model = LinearDiscriminantAnalysis()
 lda_model.fit(x_train, y_train)
 
 y_pred_LDA = lda_model.predict(x_test)
-
+#confusion matrix
 confusion_matrix_LDA = pd.crosstab(y_test, y_pred_LDA, rownames=['Actual'], colnames=['Predicted'])
 sns.heatmap(confusion_matrix_LDA, annot=True)
-
+#print results
 print()
 print('LDA Metrics:')
 print('Accuracy: ', metrics.accuracy_score(y_test, y_pred_LDA))
 print('Precision: ', metrics.precision_score(y_test, y_pred_LDA))
 print('Recall: ', metrics.recall_score(y_test, y_pred_LDA))
 print()
-
+#show plot
 plt.show()
 
 # QDA
@@ -118,6 +119,7 @@ print('Recall: ', metrics.recall_score(y_test, y_pred_rf))
 print()
 plt.show()
 
+#model final matrix (the logistic regression model was modelled in a separate file)
 """
 
 LDA Metrics:
@@ -149,6 +151,11 @@ Random Forest Metrics:
 Accuracy:  0.712905563159166
 Precision:  0.7303571428571428
 Recall:  0.6654734786853238
+
+Logistic Regression Metrics:
+Accuracy: 0.7169264459616128
+Precision: 0.7445868316394167
+Recall: 0.6551321928460342
 
 """
 

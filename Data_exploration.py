@@ -8,12 +8,12 @@ import pandas as pd
 
 pd.set_option('display.max_columns', None)
 data = pd.read_csv("cardio_train_updated.csv")
-
+#exploring general trends of data
 print(data)
 print(data.dtypes)
 print(data.describe())
 
-# Counts
+# Counts for data distribution
 data['counts'] = 1
 print(data[['counts', 'gluc']].groupby(['gluc']).agg('count'))
 data['counts'] = 1
@@ -35,9 +35,7 @@ print(data[['counts', 'ap_hi']].groupby(['ap_hi']).agg('count'))
 data['counts'] = 1
 print(data[['counts', 'cholesterol']].groupby(['cholesterol']).agg('count'))
 
-"""
-PLOTS
-"""
+#boxplots to observe the outliers
 
 # boxplot for height
 fig = plt.figure(figsize=(10, 10))  # Define plot area
@@ -55,7 +53,7 @@ ax.set_title('Box plot of weight (kg)')  # Give the plot a main title
 ax.set_ylim(0.0, 300)
 plt.show()
 
-# boxplot for app_hi
+# boxplot for app_hi (systolic blood pressure)
 fig = plt.figure(figsize=(10, 10))  # Define plot area
 ax = fig.gca()  # Define axis
 plt.boxplot(data.loc[:, 'ap_hi'])
@@ -63,6 +61,7 @@ ax.set_title('Box plot of systolic blood pressure (mmHg)')  # Give the plot a ma
 ax.set_ylim(0.0, 300)
 plt.show()
 
+# boxplot for app_low (diastolic blood pressure)
 fig = plt.figure(figsize=(10, 10))  # Define plot area
 ax = fig.gca()  # Define axis
 plt.boxplot(data.loc[:, 'ap_lo'])
@@ -70,9 +69,7 @@ ax.set_title('Box plot of diastolic blood pressure')  # Give the plot a main tit
 ax.set_ylim(0.0, 300)
 plt.show()
 
-"""
-Counting Outliers
-"""
+#Counting outliers
 
 # To Numpy
 data_array = data.to_numpy()
@@ -154,6 +151,7 @@ for i in range(len(max)):
     index = np.nonzero(data_array[:, id[i]] < min[i])
     data_array = np.delete(data_array, index[0], axis=0)
 
+#data cleaning - making data binary
 # male (2->0)
 index = np.nonzero(data_array[:, 2] == 2)
 for i in index:
@@ -209,6 +207,7 @@ diaGood = diaGood[diaGood >= minD]
 
 full_data = np.copy(data_array)'''
 
+#results of data distribution
 '''
                   ID           Age        Gender        Height        Weight  
 count   62103.000000  62103.000000  62103.000000  62103.000000  62103.000000   
