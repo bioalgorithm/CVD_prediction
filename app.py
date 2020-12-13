@@ -123,8 +123,7 @@ app.layout = html.Div([
                         id="chol",
                         options=[
                             {'label': 'Normal', 'value': 0},
-                            {'label': 'High', 'value': 1},
-                            {'label': 'Very High', 'value': 2}],
+                            {'label': 'High', 'value': 1}],
                         value=0
                     ),
                 ],
@@ -138,8 +137,7 @@ app.layout = html.Div([
                         id="gluc",
                         options=[
                             {'label': 'Normal', 'value': 0},
-                            {'label': 'High', 'value': 1},
-                            {'label': 'Very High', 'value': 2}],
+                            {'label': 'High', 'value': 1}],
                         value=0
                     ),
                 ],
@@ -197,7 +195,7 @@ app.layout = html.Div([
         dbc.Button('Reset', size="sm", color="light", id='reset', n_clicks=0, style={'margin-left': 20, 'padding': 10}),
 
     ], className='row0', style={'margin-top': 10, 'border':
-        '1px solid #C6CCD5', 'padding': 10,
+                                '1px solid #C6CCD5', 'padding': 10,
                                 'border-radius': '5px'})),
     html.Br(),
     html.Br(),
@@ -225,13 +223,6 @@ app.layout = html.Div([
                State('active', 'value')
                ])
 def prediction(s_clicks, gender, age, height, weight, sys, chol, gluc, smoke, alc, active):
-    # Initialization
-    chol_norm_bool = 0
-    chol_high_bool = 0
-    chol_vhigh_bool = 0
-    gluc_norm_bool = 0
-    gluc_high_bool = 0
-    gluc_vhigh_bool = 0
 
     # Checks clicks
     if s_clicks == 0:
@@ -249,30 +240,13 @@ def prediction(s_clicks, gender, age, height, weight, sys, chol, gluc, smoke, al
     if not sys:
         sys = 0
 
-    print("sys", sys)
-    # Turns into 1hot implementation
-    if chol == 0:
-        chol_norm_bool = 1
-    elif chol == 1:
-        chol_high_bool = 1
-    else:
-        chol_vhigh_bool = 1
-
-    if gluc == 0:
-        gluc_norm_bool = 1
-    elif gluc == 1:
-        gluc_high_bool = 1
-    else:
-        gluc_vhigh_bool = 1
 
     # Input into dataset
     if clicked:
-        data = np.array([[
+        data = np.array([
             age, gender, height, weight, sys,
-            chol_norm_bool, chol_high_bool, chol_vhigh_bool,
-            gluc_norm_bool, gluc_high_bool, gluc_vhigh_bool,
-            smoke, alc, active
-        ]])
+            chol, gluc, smoke, alc, active
+        ])
         data.reshape(1, -1)
 
         # Check probability
