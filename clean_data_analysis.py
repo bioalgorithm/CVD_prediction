@@ -14,10 +14,11 @@ str = ['gender', 'chlosterol', 'glucose', 'smoke', 'alcohol', 'active']
 id = [2, 7, 8, 9, 10, 11]
 d = len(str)
 
+
 for cvd in range(2):
     index = np.nonzero(data_array[:, -1] == cvd)
     k = len(index[0])
-    #print(index)
+    print(index)
 
     bin_array = np.zeros(d)
 

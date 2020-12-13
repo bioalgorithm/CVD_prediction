@@ -183,7 +183,7 @@ index = np.nonzero(data_array[:, 8] == 3)
 for i in index:
     data_array[i, 8] = 1
 
-np.savetxt("cardio_train_clean.csv", data_array, delimiter=",", header= "id")
+#np.savetxt("cardio_train_clean.csv", data_array, delimiter=",", header= "id")
 
 data_clean = pd.read_csv("cardio_train_clean.csv")
 
