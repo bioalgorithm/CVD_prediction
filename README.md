@@ -7,7 +7,7 @@ In this project we deployed and tested 7 different models.
 ------------------------------------------------- Extra Code -----------------------------------------------------------
 
 In the 'Data Exploration, Training, Evaluation' directory can be found the code used to condition the data, feature
-select, as well as code to allow for a better understanding of the data. These are for your reference.
+select, as well as code to allow for a better understanding of the data. These are for your reference. Used Python 3.7
 
 ---------------------------------------------------- APP ---------------------------------------------------------------
 
