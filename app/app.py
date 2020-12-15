@@ -242,7 +242,6 @@ def prediction(s_clicks, gender, age, height, weight, sys, chol, gluc, active):
     Output('chol', 'value'),
     Output('gluc', 'value'),
     Output('active', 'value')],
-
     [Input('submit-val', 'n_clicks')])
 def update(reset):
         return 0, "30 - 80 years", "140 - 180 cm", "40 - 110 kg", "90 - 170 mmHg", 0, 0, 0
