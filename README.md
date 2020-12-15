@@ -16,7 +16,7 @@ To deploy the app, please RUN the app.py code, and click the link displayed in t
 browser window with the application running. 
 Please keep the app.py code running while the application is in use.
 
-The app is very self explanatory, but for use:
+The app is very user-friendly. Below are the instructions on how to use it:
 
 Please input all the patient's data, including Gender, Age, Height, Weight, Systolic BP, Cholesterol and Glucose
 ranking, and if the individual is active. After all the forms are correctly inputted (within the specified ranges),
