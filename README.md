@@ -1,14 +1,13 @@
 # CVD_prediction
 --------------------------------------------------- Intro --------------------------------------------------------------
 
-This project focuses on building a machine learning model to predict the risk of developing cardiovascular disease (CVD)
-The original dataset can be accessed from: https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
-In this project we deployed and tested 7 different models.
+This project focuses on building a machine learning model to predict the risk of developing cardiovascular disease (CVD).
+The original dataset can be accessed from: https://www.kaggle.com/sulianova/cardiovascular-disease-dataset.
+In this project we deployed and tested 7 different machine learning models.
 
 ------------------------------------------------- Extra Code -----------------------------------------------------------
 
-In the 'Data Exploration, Training, Evaluation' directory can be found the code used to condition the data, feature
-select, as well as code to allow for a better understanding of the data. These are for your reference. Used Python 3.7
+In the 'Data Exploration, Training, Evaluation' directory the code used to do data exploration, feature selection and engineering, modelling and model tuning can be found. All the data files are included for your reference. Python 3.7 was used for the project.
 
 ---------------------------------------------------- APP ---------------------------------------------------------------
 
@@ -32,6 +31,8 @@ For ease in readability, recognize the following colour coding for the probabili
 Green indicates a risk factor of below 50%
 Yellow indicates a risk factor between 50% and 75%
 Red indicates a risk factor above 75%
+
+It is important to note that this application was build for the purpose of CP8318 project. It is not to be used to replace medical advice. 
 
 ---------------------------------------------------- Presentation --------------------------------------------------------
 
