@@ -33,7 +33,7 @@ Green indicates a risk factor of below 50%
 Yellow indicates a risk factor between 50% and 75%
 Red indicates a risk factor above 75%
 
----------------------------------------------------- Presentation ---------------------------------------------------------------
+---------------------------------------------------- Presentation --------------------------------------------------------
 
 A 5 minute pitch of the project is found at the file: CP8318 Final Project Presentation Recoding - Albina Cako and Jeffrey Rezazada.mp4
 The presentation describes a quick overview of the project
