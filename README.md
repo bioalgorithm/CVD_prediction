@@ -36,6 +36,6 @@ It is important to note that this application was build for the purpose of CP831
 
 ---------------------------------------------------- Presentation --------------------------------------------------------
 
-A 5 minute pitch of the project is found at the file: CP8318 Final Project Presentation Recoding - Albina Cako and Jeffrey Rezazada.mp4
-The presentation describes a quick overview of the project
-The end of the presentation provides a guide on how to use the run and use the application
+A 5 minute pitch of the project is found at the file: CP8318 Final Project Presentation Recoding - Albina Cako and Jeffrey Rezazada.mp4.
+The presentation describes a quick overview of the project.
+The end of the presentation provides a guide on how to use the run and use the application.
