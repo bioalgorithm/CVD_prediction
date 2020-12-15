@@ -1,5 +1,6 @@
 # CVD_prediction
 --------------------------------------------------- Intro --------------------------------------------------------------
+
 This project focuses on building a machine learning model to predict the risk of developing cardiovascular disease (CVD)
 The original dataset can be accessed from: https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 In this project we deployed and tested 7 different models.
@@ -33,6 +34,7 @@ Yellow indicates a risk factor between 50% and 75%
 Red indicates a risk factor above 75%
 
 ---------------------------------------------------- Presentation ---------------------------------------------------------------
+
 A 5 minute pitch of the project is found at the file: CP8318 Final Project Presentation Recoding - Albina Cako and Jeffrey Rezazada.mp4
 The presentation describes a quick overview of the project
 The end of the presentation provides a guide on how to use the run and use the application
