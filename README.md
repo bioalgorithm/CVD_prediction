@@ -28,11 +28,11 @@ needing inputs outside the range for a certain patient. This red border signifie
 accurate, but risk can still be provided.
 
 For ease in readability, recognize the following colour coding for the probability:
-Green indicates a risk factor of below 50%
-Yellow indicates a risk factor between 50% and 75%
-Red indicates a risk factor above 75%
+Green indicates a risk factor of below 50%.
+Yellow indicates a risk factor between 50% and 75%.
+Red indicates a risk factor above 75%.
 
-It is important to note that this application was build for the purpose of CP8318 project. It is not to be used to replace medical advice. 
+It is important to note that this application was build for the purpose of CP8318 project. It is not to be used to give or replace medical advice. 
 
 ---------------------------------------------------- Presentation --------------------------------------------------------
 
