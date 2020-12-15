@@ -33,5 +33,6 @@ Yellow indicates a risk factor between 50% and 75%
 Red indicates a risk factor above 75%
 
 ---------------------------------------------------- Presentation ---------------------------------------------------------------
-A 5 minute pitch presentation giving an overview of our project is found at the file: 
-At the end of the presentation we provide a guide on how the application can be ran and used. 
+A 5 minute pitch of the project is found at the file: CP8318 Final Project Presentation Recoding - Albina Cako and Jeffrey Rezazada.mp4
+The presentation describes a quick overview of the project
+The end of the presentation provides a guide on how to use the run and use the application
