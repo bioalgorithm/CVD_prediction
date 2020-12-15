@@ -3,7 +3,7 @@
 
 This project focuses on building a machine learning model to predict the risk of developing cardiovascular disease (CVD).
 The original dataset can be accessed from: https://www.kaggle.com/sulianova/cardiovascular-disease-dataset.
-In this project we deployed and tested 7 different machine learning models.
+In this project we trained and tested 7 different machine learning models.
 
 ------------------------------------------------- Extra Code -----------------------------------------------------------
 
@@ -32,6 +32,7 @@ Green indicates a risk factor of below 50%.
 Yellow indicates a risk factor between 50% and 75%.
 Red indicates a risk factor above 75%.
 
+The application uses a logistic regression model with a 72% accuracy and 66 % recall score. 
 It is important to note that this application was build for the purpose of CP8318 final course project. It is not to be used to give or replace medical advice. 
 
 ---------------------------------------------------- Presentation --------------------------------------------------------
