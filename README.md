@@ -42,4 +42,5 @@ The presentation describes a quick overview of the project.
 The end of the presentation provides a guide on how to use the run and use the application.
 
 ---------------------------------------------------- Final Report --------------------------------------------------------
+
 The final project report can be found under the filename: CP8318_Final_Report_CVD_Predicition_Albina_Cako_Jeffrey_Rezazada.pdf
