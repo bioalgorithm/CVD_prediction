@@ -6,10 +6,9 @@ import pandas as pd
 import joblib
 from dash.dependencies import Input, Output, State
 
-app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY])
+app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
 app.title = 'Cardiovascular Disease Predictor'
 
-df = pd.read_csv("cardio_train_clean_featureselection.csv")
 model = joblib.load('logistic_regression_final_model.sav')
 
 layout = dict(
