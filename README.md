@@ -31,3 +31,7 @@ For ease in readability, recognize the following colour coding for the probabili
 Green indicates a risk factor of below 50%
 Yellow indicates a risk factor between 50% and 75%
 Red indicates a risk factor above 75%
+
+---------------------------------------------------- Presentation ---------------------------------------------------------------
+A 5 minute pitch presentation giving an overview of our project is found at the file: 
+At the end of the presentation we provide a guide on how the application can be ran and used. 
