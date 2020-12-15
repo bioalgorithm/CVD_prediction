@@ -1,7 +1,7 @@
 # CVD_prediction
 --------------------------------------------------- Intro --------------------------------------------------------------
 
-This project focuses on building a machine learning model to predict the risk of developing cardiovascular disease (CVD).
+This project focuses on building a machine learning model to predict the risk of developing cardiovascular disease (CVD) for CP8318 (Machine Learning Course).
 The original dataset can be accessed from: https://www.kaggle.com/sulianova/cardiovascular-disease-dataset.
 In this project we trained and tested 7 different machine learning models.
 
@@ -40,3 +40,6 @@ It is important to note that this application was build for the purpose of CP831
 A 5 minute pitch of the project is found at the file: CP8318 Final Project Presentation Recoding - Albina Cako and Jeffrey Rezazada.mp4.
 The presentation describes a quick overview of the project.
 The end of the presentation provides a guide on how to use the run and use the application.
+
+---------------------------------------------------- Final Report --------------------------------------------------------
+The final project report can be found under the filename: CP8318_Final_Report_CVD_Predicition_Albina_Cako_Jeffrey_Rezazada.pdf
